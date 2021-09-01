@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Laptops.Models.Categorys>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome to Laptop Store</h1>
+
+</div>
+
+
+@foreach (var item in Model)
+{
+<div class="panel panel-default" >
+    <h1 class="panel-heading"> @Html.DisplayFor(modelItem => item.CategoryName)</h1>
+    @*<h5> @Html.DisplayFor(modelItem => item.CategoryDesc)</h5>*@
+
+    <div class="row">
+        @foreach (var subitem in item.product)
+        {
+
+            <div class="col-md-3 thumbnail" style="margin-left:20px;">
+
+                <img src="~/Uploads/@subitem.Product_Image" style="width:120px" alt="Alternate Text" />
+                <h2> @Html.DisplayFor(modelItem => subitem.ProductName)</h2>
+                <h5> @Html.DisplayFor(modelItem => subitem.ProductDesc)</h5>
+
+                <h5>Price <strong style="color:red">@Html.DisplayFor(modelItem => subitem.ProductPrice, "SR")  </strong> </h5>
+                <button class="btn btn-primary">details</button>
+
+            </div>
+
+        }
+    </div>
+</div>
+}
+
